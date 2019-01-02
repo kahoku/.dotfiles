@@ -1,0 +1,20 @@
+snippet pub "public function " b
+public function test
+endsnippet
+
+snippet sig "文件说明" b
+<?php
+/**
+ * Filename  : `!v expand("%:t")`
+ * Describe	 : ${1:文件说明}
+ * Author	 : lixiaoxing
+ * Since	 : `date +"%F %T"`
+ * $Id$
+ */
+
+ ${2:filecontent}
+endsnippet
+
+snippet moi "modify info"
+//${1:modify} by lixiaoxing at `date +"%F %T"` 
+endsnippet
