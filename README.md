@@ -41,15 +41,18 @@
 	echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
 	echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.zshrc
 	exec "$SHELL"
-```
+   ```
+
 3. install virtualenv plugin
-```
+
+    ```shell
 	git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
 	echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.zshrc
 	exec "$SHELL"
-```
+    ```
+
 4. 安装3.6.6版本
-`pyenv install 3.6.6`
+    `pyenv install 3.6.6`
 
 ## [git运行配置](https://git-scm.com/book/zh/v2/) ##
 
