@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
   export PATH=$HOME/bin:/usr/local/vim80/bin:$PATH
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/lixiaoxing/.oh-my-zsh
+  export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -109,13 +109,13 @@ alias pug="publish_git"
 
 alias tmux="tmux -2"
 alias f='call_fg() { fg %"$1" }; call_fg'
-alias phpunit="/data1/lixiaoxing/repo/phpunit.phar"
+alias phpunit="$HOME/repo/phpunit.phar"
 alias gmy="git log --oneline --author=lixiaoxing --name-only";
 alias pj='proj'
 alias pa='proja'
 alias pp='projp'
 #alias translate="translate"
-#Specific functions and alias by lixiaoxing@nicaifu.com
+#Specific functions and alias 
 function svn_diff(){
     echo "svn diff $*"
     svn diff $*
@@ -193,25 +193,6 @@ function svn_log(){
         svn log -v -rhead:{2018${svnday}} | sed -n '/'${author}'/,/-----$/ p' | grep trunk|awk -F"trunk/" '{print $2}' | sort -u;
     fi
         
-}
-
-function __translate()
-{
-  wd="`echo -n $1 | sed 's/ /%20/g'`"
-  if [ "$wd" = "" ];then
-    return 0
-  fi
-  tmp=/tmp/.fanyi.tmp
-  touch $tmp
-  curl --connect-timeout 4 -s -L http://dict.youdao.com/search\?q\=$wd -o $tmp
-  [ $? -ne 0 ] && rm -rf $tmp return 1
-  fy=`grep -E -A30  '<span class="pronounce">' $tmp`
-  vo=`sed -n 's#^.*<span class="phonetic">\(.*\)</span>.*#\1#gp' $tmp`
-  if [ "$vo" != "" ];then
-    echo $vo
-  fi
-  echo $fy | grep -E -o "<li>.*</li>" | sed -n 's#<ul>\|<li>\|</ul>\|</li>##gp'
-  rm -rf $tmp
 }
 
 
